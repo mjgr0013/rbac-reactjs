@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DashboardPage from "./Components/Dashboard/Dashboard";
+import HomePage from "./Components/Home/Home";
+import CallbackPage from "./Components/Callback/Callback";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Auth from "./Components/Auth/Auth";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App container">
+        <Auth>
+          <div className="jumbotron">
+            <Router>
+              <Switch>
+                <Route exact path="/" component={HomePage}/>
+                <Route path="/dashboard" component={DashboardPage}/>
+                <Route path="/callback" component={CallbackPage}/>
+              </Switch>
+            </Router>
+          </div>
+        </Auth>
+      </div>
   );
 }
 
